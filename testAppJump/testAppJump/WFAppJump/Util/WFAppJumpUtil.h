@@ -16,4 +16,7 @@
 // - 获取源应用名称
 + (NSString *)getBundleName;
 
++ (NSString *)encodeUTF_8:(NSString *)source;
++ (NSString *)decodeUTF_8:(NSString *)source;
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "WFRequestServlet.h"
+#import "WFAppJumpUtil.h"
 
 @interface WFRequestServlet ()
 /*** 参数 ***/
@@ -116,7 +117,12 @@
 {
     if(key && key.length > 0)
     {
-        return [self.paramDict objectForKey:key];
+        NSString *value = [self.paramDict objectForKey:key];
+        if(value)
+        {
+            value = [WFAppJumpUtil decodeUTF_8:value];
+        }
+        return value;
     }
     return @"";
 }
