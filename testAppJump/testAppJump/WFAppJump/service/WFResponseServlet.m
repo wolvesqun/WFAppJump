@@ -32,7 +32,7 @@
                                   andParameter:(NSDictionary *)parameter
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    if(parameter == nil)
+    if(parameter != nil)
     {
         [dict setDictionary:parameter];
     }

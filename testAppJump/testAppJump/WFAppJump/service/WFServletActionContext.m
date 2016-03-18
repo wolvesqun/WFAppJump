@@ -64,10 +64,10 @@
             bHandle = YES;
             id actionCtrl = [self.actionCtrollerContext ctrollerForKey:ctrollerKey];
             NSString *actionKey = [self.requestServlet getAction];
-            SEL action = NSSelectorFromString([NSString stringWithFormat:@"action%@", actionKey]);
-            if([actionCtrl respondsToSelector:action])
+            SEL actionSelector = NSSelectorFromString([NSString stringWithFormat:@"action%@", actionKey]);
+            if([actionCtrl respondsToSelector:actionSelector])
             {
-                [actionCtrl performSelector:action];
+                [actionCtrl performSelector:actionSelector];
             }
             else if([actionCtrl respondsToSelector:@selector(actionExecute)])
             {
