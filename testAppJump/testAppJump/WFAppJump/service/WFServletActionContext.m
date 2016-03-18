@@ -61,6 +61,7 @@
         NSString *ctrollerKey = [self.requestServlet getCtroller];
         if(ctrollerKey.length > 0)
         {
+            bHandle = YES;
             id actionCtrl = [self.actionCtrollerContext ctrollerForKey:ctrollerKey];
             NSString *actionKey = [self.requestServlet getAction];
             SEL action = NSSelectorFromString([NSString stringWithFormat:@"action%@", actionKey]);
