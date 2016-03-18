@@ -19,7 +19,7 @@
  *  @param actionKey    响应的处理器（上面的action）
  *  @param parameter    要传递的参数（username=u1）
  */
-- (void)sendMessageToAppWithAppKey:(NSString *)appKey
+- (BOOL)sendMessageToAppWithAppKey:(NSString *)appKey
                          andModule:(NSString *)module
                        andCtroller:(NSString *)ctroller
                          andAction:(NSString *)action
@@ -34,7 +34,7 @@
  *  
  *  @note            这个api带应用的bundleID和app名称
  */
-- (void)sendBundleIdNameMessageToAppWithAppKey:(NSString *)appKey
+- (BOOL)sendBundleIdNameMessageToAppWithAppKey:(NSString *)appKey
                                      andModule:(NSString *)module
                                    andCtroller:(NSString *)ctroller
                                      andAction:(NSString *)action

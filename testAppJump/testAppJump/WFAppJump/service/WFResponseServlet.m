@@ -10,7 +10,7 @@
 
 @implementation WFResponseServlet
 
-- (void)sendMessageToAppWithAppKey:(NSString *)appKey
+- (BOOL)sendMessageToAppWithAppKey:(NSString *)appKey
                          andModule:(NSString *)module
                        andCtroller:(NSString *)ctroller
                          andAction:(NSString *)action
@@ -20,11 +20,12 @@
     {
         NSString *paramString = [WFAppJumpUtil buildParameterStringWithDict:parameter];
         NSString *URLString = [NSString stringWithFormat:@"%@://%@/%@/%@?%@",appKey, module, ctroller, action, paramString];
-        [self sendMessageToAppWithURLString:URLString];
+        return [self sendMessageToAppWithURLString:URLString];
     }
+    return NO;
 }
 
-- (void)sendBundleIdNameMessageToAppWithAppKey:(NSString *)appKey
+- (BOOL)sendBundleIdNameMessageToAppWithAppKey:(NSString *)appKey
                                      andModule:(NSString *)module
                                    andCtroller:(NSString *)ctroller
                                      andAction:(NSString *)action
@@ -38,15 +39,16 @@
     [dict setObject:[WFAppJumpUtil getBundleIdentifier] forKey:kWFBundleIdentifier];
     [dict setObject:[WFAppJumpUtil getBundleName] forKey:kWFBundleDisplayName];
     
-    [self sendMessageToAppWithAppKey:appKey andModule:module andCtroller:ctroller andAction:action andParameter:dict];
+    return [self sendMessageToAppWithAppKey:appKey andModule:module andCtroller:ctroller andAction:action andParameter:dict];
 }
 
-- (void)sendMessageToAppWithURLString:(NSString *)URLString
+- (BOOL)sendMessageToAppWithURLString:(NSString *)URLString
 {
     if(URLString.length > 0)
     {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:URLString]];
+        return [[UIApplication sharedApplication] openURL:[NSURL URLWithString:URLString]];
     }
+    return NO;
 }
 
 @end
