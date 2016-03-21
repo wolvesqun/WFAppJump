@@ -21,8 +21,6 @@
  */
 - (NSString *)getParameter:(NSString *)key;
 
-// - appkey-》也可以叫作协议（与http作用一样
-- (NSString *)getAppKey;
 // - 获取源bundle identifier（由哪个应用跳转过来的bundle ID）
 - (NSString *)getBundleIdentifier;
 // - 获取源应用名称

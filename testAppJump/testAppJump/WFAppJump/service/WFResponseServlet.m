@@ -7,6 +7,7 @@
 //
 
 #import "WFResponseServlet.h"
+#import "WFServletActionContext.h"
 
 @implementation WFResponseServlet
 

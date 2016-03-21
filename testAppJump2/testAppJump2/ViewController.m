@@ -36,7 +36,7 @@
 
 - (void)actionToTap
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"myApp://open/WXSceneSession/share?text=good"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"weixin_app://open/WXSceneSession/share?text=good"]];
 }
 
 

@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "WFServletActionContext.h"
 
 @interface ViewController ()
 
@@ -24,6 +25,25 @@
     lbTitle.textAlignment = NSTextAlignmentCenter;
     lbTitle.backgroundColor = [UIColor blackColor];
     [self.view addSubview:lbTitle];
+    
+    UIButton *backButton = [self createButtonWithFrame:CGRectMake(10, 100, 150, 50) andTitle:@"返回原先应用"];
+    [backButton addTarget:self action:@selector(backOriginApp) forControlEvents:UIControlEventTouchUpInside];
+    
+}
+
+- (UIButton *)createButtonWithFrame:(CGRect)frame andTitle:(NSString *)title
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:title forState:UIControlStateNormal];
+    button.backgroundColor = [UIColor greenColor];
+    button.frame = frame;
+    [self.view addSubview:button];
+    return button;
+}
+
+- (void)backOriginApp
+{
+    [[[WFServletActionContext shareInstanced] getResponseServlet] openOriginApp];
 }
 
 - (void)didReceiveMemoryWarning {
