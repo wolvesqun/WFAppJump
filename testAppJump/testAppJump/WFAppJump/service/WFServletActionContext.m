@@ -64,28 +64,39 @@
             bHandle = YES;
             id actionCtrl = [self.actionCtrollerContext ctrollerForKey:ctrollerKey];
             NSString *actionKey = [self.requestServlet getAction];
-            SEL actionSelector = NSSelectorFromString([NSString stringWithFormat:@"action%@", actionKey]);
-            if([actionCtrl respondsToSelector:actionSelector])
-            {
-                [actionCtrl performSelector:actionSelector];
-            }
-            else if([actionCtrl respondsToSelector:@selector(actionExecute)])
-            {
-                // *** 默认处理
-                [actionCtrl actionExecute];
-            }
+            [self executeActionWithActionCtrl:actionCtrl andActionKey:actionKey];
             
         }
-//        NSString *actionKey = [self.requestServlet getActionKey];
-//        if(actionKey && actionKey.length > 0)
-//        {
-//            id action = [self.actionCtrollerContext ctrollerForKey:actionKey];
-//            [action execute];
-//            bHandle = YES;
-//        }
         
     }
     return bHandle;
+}
+
+#pragma mark -
+- (void)executeActionWithActionCtrl:(id)actionCtrl andActionKey:(NSString *)key
+{
+    if(actionCtrl && key.length > 0 && ![key isEqualToString:@""])
+    {
+        key = [key lowercaseString];
+        SEL actionSeletor = NSSelectorFromString([NSString stringWithFormat:@"action%@",key]); // 小写
+        // 1. 实现小写
+        if([actionCtrl respondsToSelector:actionSeletor])
+        {
+            [actionCtrl performSelector:actionSeletor];
+            return;
+        }
+        // 2. 实现大写
+        key = [[key substringToIndex:1].uppercaseString stringByAppendingString:[key substringFromIndex:1]];
+        SEL actionSelector2 = NSSelectorFromString([NSString stringWithFormat:@"action%@",key]); // 大写
+        if([actionCtrl respondsToSelector:actionSelector2])
+        {
+            [actionCtrl performSelector:actionSelector2];
+        }
+        else if([actionCtrl respondsToSelector:@selector(actionExecute)])
+        {
+            [actionCtrl actionExecute];
+        }
+    }
 }
 
 #pragma mark - 获取容器相关参数
