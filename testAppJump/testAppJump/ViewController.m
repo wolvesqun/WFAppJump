@@ -26,8 +26,6 @@
     lbTitle.backgroundColor = [UIColor blackColor];
     [self.view addSubview:lbTitle];
     
-    UIButton *backButton = [self createButtonWithFrame:CGRectMake(10, 100, 150, 50) andTitle:@"返回原先应用"];
-    [backButton addTarget:self action:@selector(backOriginApp) forControlEvents:UIControlEventTouchUpInside];
     
 }
 
@@ -41,10 +39,7 @@
     return button;
 }
 
-- (void)backOriginApp
-{
-    [[[WFServletActionContext shareInstanced] getResponseServlet] openOriginApp];
-}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
