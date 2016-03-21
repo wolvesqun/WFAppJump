@@ -12,6 +12,8 @@
 @interface WFRequestServlet ()
 /*** 参数 ***/
 @property (strong, nonatomic) NSMutableDictionary *paramDict;
+/*** appkey-》也可以叫作协议（与http作用一样） ***/
+@property (strong, nonatomic) NSString *appKey;
 /*** 模块，相当于原来的host ***/
 @property (strong, nonatomic) NSString *module;
 /*** 响应控制器 ***/
@@ -47,6 +49,7 @@
     
     if(range1.location != NSNotFound && range1.length > 0)
     {
+        
         NSString *URLFront = nil;
         NSString *parameterString = nil;
         if(range2.location != NSNotFound && range2.length > 0)
@@ -58,6 +61,7 @@
         {
             URLFront = [self.originURLString substringWithRange:NSMakeRange(range1.location + range1.length, self.originURLString.length - range1.location - range1.length)];
         }
+        self.appKey = [self.originURLString substringToIndex:range1.location];
         [self handleURLFront:URLFront];
         [self handleParameter:parameterString];
     }
@@ -125,6 +129,11 @@
         return value;
     }
     return @"";
+}
+
+- (NSString *)getAppKey
+{
+    return self.appKey;
 }
 
 // - 获取源bundle identifier（由哪个应用跳转过来的bundle ID）
