@@ -56,7 +56,7 @@
 {
     if(defaultActionCtroller)
     {
-        self.defaultActionCtroller = defaultActionCtroller;
+        _defaultActionCtroller = defaultActionCtroller;
     }
 }
 

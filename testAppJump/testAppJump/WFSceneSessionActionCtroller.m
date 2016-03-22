@@ -24,6 +24,7 @@
 
 @end
 
+
 // [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"myApp://open/WXSceneSession/share?text=good"]];
 
 
