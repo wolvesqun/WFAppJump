@@ -26,7 +26,7 @@
     [[WFActionCtrollerContext getContext] setCtroller:[WFSceneSessionActionCtroller new] forKey:@"WXSceneSession"];
     [[WFActionCtrollerContext getContext] setCtroller:[WFUserActionCtroller new] forKey:@"user"];
     
-    [[WFServletActionContext shareInstanced] handleURL:[NSURL URLWithString:@"myApp://open/user/register?username=u1"]];
+    //[[WFServletActionContext shareInstanced] handleURL:[NSURL URLWithString:@"myApp://open/user/register?username=u1"]];
     return YES;
 }
 

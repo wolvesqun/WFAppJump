@@ -10,9 +10,11 @@
 
 @implementation WFUserActionCtroller
 
-- (void)actionRegister
+- (void)actionRegister:(NSDictionary *)param
 {
     NSLog(@"=====> actionRegister, username = %@", [WFRequestHelper getString:@"username"]);
 }
+
+
 
 @end

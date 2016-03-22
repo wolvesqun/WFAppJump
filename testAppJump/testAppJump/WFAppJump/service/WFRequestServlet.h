@@ -20,6 +20,7 @@
  *  @param key
  */
 - (NSString *)getParameter:(NSString *)key;
+- (NSDictionary *)getAllParam;
 
 // - 获取源bundle identifier（由哪个应用跳转过来的bundle ID）
 - (NSString *)getBundleIdentifier;

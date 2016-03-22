@@ -150,5 +150,9 @@
 {
     return self.action;
 }
+- (NSDictionary *)getAllParam
+{
+    return self.paramDict;
+}
 
 @end

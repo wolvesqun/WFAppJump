@@ -20,22 +20,9 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>WF_weixing</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>myAppKey_gdsfgsdfgsdresdds</string>
-			</array>
-		</dict>
-	</array>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>weixin_app</string>
+		<string>wxapp</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

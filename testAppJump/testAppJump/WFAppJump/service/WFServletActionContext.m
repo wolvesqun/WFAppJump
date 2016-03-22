@@ -85,12 +85,27 @@
             [actionCtrl performSelector:actionSeletor];
             return;
         }
+        actionSeletor = NSSelectorFromString([NSString stringWithFormat:@"action%@:",key]); // 小写
+        if([actionCtrl respondsToSelector:actionSeletor])
+        {
+           [actionCtrl performSelector:actionSeletor withObject:[self.requestServlet getAllParam]];
+            return;
+        }
+        
+        
         // 2. 实现大写
         key = [[key substringToIndex:1].uppercaseString stringByAppendingString:[key substringFromIndex:1]];
         SEL actionSelector2 = NSSelectorFromString([NSString stringWithFormat:@"action%@",key]); // 大写
         if([actionCtrl respondsToSelector:actionSelector2])
         {
             [actionCtrl performSelector:actionSelector2];
+            return;
+        }
+        actionSelector2 = NSSelectorFromString([NSString stringWithFormat:@"action%@:",key]); // 大写
+        if([actionCtrl respondsToSelector:actionSelector2])
+        {
+            [actionCtrl performSelector:actionSelector2 withObject:[self.requestServlet getAllParam]];
+            return;
         }
         else if([actionCtrl respondsToSelector:@selector(actionExecute)])
         {
